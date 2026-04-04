@@ -1,0 +1,26 @@
+# Python
+.venv/
+**/__pycache__/
+*.py[cod]
+*.so
+.Python
+env/
+venv/
+*.log
+*.db
+db.sqlite3
+**/staticfiles/
+**/media/
+BackEnd/ass1_db
+
+# Node.js / React
+node_modules/
+.env
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# OS generated files
+Thumbs.db
