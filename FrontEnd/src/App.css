@@ -1,4 +1,4 @@
-/* 全局样式 */
+/* overall */
 * {
   margin: 0;
   padding: 0;
@@ -12,7 +12,7 @@ body {
   padding: 2rem;
 }
 
-/* 主容器 */
+/* main container */
 .app-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -22,7 +22,7 @@ body {
   overflow: hidden;
 }
 
-/* 导航栏 */
+/* nav bar */
 .navbar {
   display: flex;
   gap: 1rem;
@@ -64,12 +64,12 @@ body {
   cursor: pointer;
 }
 
-/* 内容区域 */
+/* content */
 .content {
   padding: 2rem;
 }
 
-/* 商品网格 */
+/* grrid */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -119,7 +119,7 @@ body {
   background: #2563eb;
 }
 
-/* 购物车样式 */
+/* cart */
 .cart-header {
   display: flex;
   justify-content: space-between;
@@ -200,7 +200,7 @@ body {
   font-size: 1.1rem;
 }
 
-/* 标题 */
+/* title */
 .page-title {
   font-size: 1.8rem;
   font-weight: 700;
