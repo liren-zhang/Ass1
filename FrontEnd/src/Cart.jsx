@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import './App.css';
 
 function Cart({ userId }) {
   const [cart, setCart] = useState(null);
@@ -16,7 +17,7 @@ function Cart({ userId }) {
 
   useEffect(() => {
     fetchCart();
-  }, [userId]);   // 当 userId 变化时重新获取购物车
+  }, [userId]);
 
   const updateQuantity = (productId, newQuantity) => {
     fetch(`/api/cart/update_quantity/?user_id=${userId}`, {
@@ -38,28 +39,35 @@ function Cart({ userId }) {
       .catch(err => console.error(err));
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (!cart || cart.items.length === 0) return <div>Your cart is empty.</div>;
+  if (loading) return <div className="empty-cart">Loading...</div>;
+  if (!cart || cart.items.length === 0) return <div className="empty-cart">Your cart is empty.</div>;
 
   return (
     <div>
-      <h2>Shopping Cart (User {userId})</h2>
-      <ul>
+      <div className="cart-header">
+        <h1 className="page-title">Shopping Cart (User {userId})</h1>
+      </div>
+      <ul className="cart-items">
         {cart.items.map(item => (
-          <li key={item.product.id}>
-            {item.product.name} - ${item.product.price} x {item.quantity}
-            <input
-              type="number"
-              min="1"
-              value={item.quantity}
-              onChange={(e) => updateQuantity(item.product.id, parseInt(e.target.value))}
-              style={{ width: '60px', marginLeft: '10px' }}
-            />
-            <button onClick={() => removeItem(item.product.id)}>Remove</button>
+          <li key={item.product.id} className="cart-item">
+            <div className="item-info">
+              <div className="item-name">{item.product.name}</div>
+              <div className="item-price">${item.product.price} each</div>
+            </div>
+            <div className="item-controls">
+              <input
+                type="number"
+                min="1"
+                value={item.quantity}
+                onChange={(e) => updateQuantity(item.product.id, parseInt(e.target.value))}
+                className="quantity-input"
+              />
+              <button className="remove-btn" onClick={() => removeItem(item.product.id)}>Remove</button>
+            </div>
           </li>
         ))}
       </ul>
-      <h3>Total: ${cart.total_price}</h3>
+      <div className="cart-total">Total: ${cart.total_price}</div>
     </div>
   );
 }
